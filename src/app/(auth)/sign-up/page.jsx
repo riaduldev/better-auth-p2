@@ -1,7 +1,7 @@
 "use client";
 
 
-import { signUp } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-client";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 
 const SignUpPage = () => {
@@ -18,6 +18,19 @@ const SignUpPage = () => {
     console.log(resData, error);
   };
   
+  const handleGoogleSignIn = async() => {
+   const resData = await signIn.social({
+    provider: 'google'
+   })
+   console.log('after google sign in',resData);
+  };
+
+  const handleGithubSignIn = async () => {
+    const resData = await signIn.social({
+        provider: "github"
+    })
+    console.log('sign in after github', resData);
+  }
     return (
         <div>
               <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
@@ -83,6 +96,10 @@ const SignUpPage = () => {
         </Button>
       </div>
     </Form>
+    <p>OR</p>
+    <Button onClick={handleGoogleSignIn}>Sign In With Google</Button>
+    <p>OR</p>
+    <Button onClick={handleGithubSignIn}>Sign In With GitHub</Button>
         </div>
     );
 };
