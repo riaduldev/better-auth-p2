@@ -4,6 +4,7 @@ import { signIn } from "@/lib/auth-client";
 import {Eye, EyeSlash} from "@gravity-ui/icons";
 import {Button, Description, FieldError, Form, Input, InputGroup, Label, TextField} from "@heroui/react";
 import { email } from "better-auth";
+import Link from "next/link";
 import { useState } from "react";
 
 
@@ -93,6 +94,7 @@ const SignInPage = () => {
         </Button>
       </div>
     </Form>
+    <p><small>Forgot Password?</small>{' '}<Link href= '/forgot-password' className="text-blue-600 underline text-sm">Click Here</Link></p>
         </div>
     );
 };
